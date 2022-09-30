@@ -2,3 +2,10 @@ para migrar las tablas por defecto de laravel
     > php artisan migrate
 para generar u nuevo Controller (AuthoController) 
     > php artisan make:controller AuthController
+
+--------------------------
+php artisan make:model Categoria -m
+php artisan make:model Producto -m
+php artisan make:model Cliente -m
+php artisan make:model Pedido -m
+php artisan make:migration create_pedido_producto_table

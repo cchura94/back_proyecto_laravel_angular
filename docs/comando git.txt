@@ -1,0 +1,16 @@
+---------------  ---------------
+Si el Repositorio ya existe
+    - git clone <direccion>
+Nuevo Repositorio
+    - git init
+Enlazar con el repositorio remoto (GITHUB)
+    crear una cuenta de usuario
+    crear un nuevo repositorio
+
+    - git remote add origin https://github.com/cchura94/back_proyecto_laravel_angular.git
+--------------------------------
+
+git add .
+git commit -m "Api Auth Laravel"
+git push origin master
+------------------------------------

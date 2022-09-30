@@ -1,0 +1,31 @@
+GET http://127.0.0.1:8000/api/categoria
+Accept: application/json
+
+### Guardar categoria
+POST http://127.0.0.1:8000/api/categoria
+Accept: application/json
+Content-Type: application/json
+
+{
+    "nombre": "ELECTRONICOS",
+    "detalle": "De computación"
+}
+
+### mostrar categoria
+GET http://127.0.0.1:8000/api/categoria/1
+Accept: application/json
+
+### Guardar categoria
+PUT http://127.0.0.1:8000/api/categoria/1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "nombre": "ELECTRONICOS MODIFICADO",
+    "detalle": "De computación modificado"
+}
+
+
+### eliinar categoria
+DELETE http://127.0.0.1:8000/api/categoria/1
+Accept: application/json
