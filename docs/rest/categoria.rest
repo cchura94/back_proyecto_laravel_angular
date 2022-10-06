@@ -7,8 +7,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "nombre": "ELECTRONICOS",
-    "detalle": "De computación"
+    "nombre": "ROPA",
+    "detalle": "ropa para niños"
 }
 
 ### mostrar categoria

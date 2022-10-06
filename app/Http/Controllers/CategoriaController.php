@@ -28,7 +28,7 @@ class CategoriaController extends Controller
     {
         // validar
         $request->validate([
-            "nombre" => "required|unique:categorias"
+            "nombre" => "required|unique:categorias|min:2|max:30"
         ]);
         // guardar
         $categoria = new Categoria();
@@ -62,7 +62,7 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "nombre" => "required|unique:categorias,nombre,$id"
+            "nombre" => "required|unique:categorias,nombre,$id|min:2|max:30"
         ]);
 
         $categoria = Categoria::findOrFail($id);
