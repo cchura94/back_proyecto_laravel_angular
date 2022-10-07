@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### mostrar categoria
-GET http://127.0.0.1:8000/api/categoria/1
+GET http://127.0.0.1:8000/api/categoria/3
 Accept: application/json
 
 ### Guardar categoria

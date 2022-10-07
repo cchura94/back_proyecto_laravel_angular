@@ -1,0 +1,7 @@
+GET http://127.0.0.1:8000/api/producto
+Accept: application/json
+
+### Mostrar por id
+
+GET http://127.0.0.1:8000/api/producto/1
+Accept: application/json

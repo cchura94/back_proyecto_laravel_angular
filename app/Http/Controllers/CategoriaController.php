@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
@@ -14,6 +15,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
+        // return DB::select('exec my_stored_procedure()');
         $categorias = Categoria::get(); // select * from categorias
         return response()->json($categorias, 200);
     }
@@ -48,7 +50,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        $categoria = Categoria::findOrFail($id);
+        $categoria = Categoria::with('productos')->findOrFail($id);
         return response()->json($categoria, 200);
     }
 

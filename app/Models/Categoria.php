@@ -11,5 +11,12 @@ class Categoria extends Model
 
     // protected $table = "wp_categoria";
 
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
+
+
+
 
 }
