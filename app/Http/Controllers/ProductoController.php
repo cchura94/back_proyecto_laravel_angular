@@ -14,7 +14,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::paginate(10);
+        $productos = Producto::with("categoria")->paginate(3);
 
         return response()->json($productos, 200);
     }
@@ -48,6 +48,7 @@ class ProductoController extends Controller
         $prod->cantidad = $request->cantidad;
         $prod->descripcion = $request->descripcion;
         $prod->imagen = $nombre_imagen;
+        $prod->categoria_id = $request->categoria_id;
         $prod->save();
 
         // respondemos
@@ -78,7 +79,34 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // validamos
+         $request->validate([
+            "nombre" => "required"
+        ]);
+        // subir imagen
+        
+        // guardamos
+        $prod = Producto::find($id);
+        $prod->nombre = $request->nombre;
+        $prod->precio = $request->precio;
+        $prod->cantidad = $request->cantidad;
+        $prod->descripcion = $request->descripcion;
+
+        if($file = $request->file("imagen")){
+            $direccion_archivo = $file->getClientOriginalName();
+            $file->move("imagenes/", $direccion_archivo);
+
+            $nombre_imagen = "imagenes/". $direccion_archivo;
+
+            $prod->imagen = $nombre_imagen;
+        }
+
+        $prod->categoria_id = $request->categoria_id;
+        $prod->save();
+
+        // respondemos
+
+        return response()->json(["mensaje" => "Producto Modificado"], 201);
     }
 
     /**
@@ -89,6 +117,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Producto::find($id);
+        $producto->delete();
+        return response()->json(["mensaje" => "Producto Eliminado"], 200);
     }
 }
