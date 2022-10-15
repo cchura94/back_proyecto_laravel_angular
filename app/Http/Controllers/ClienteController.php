@@ -12,9 +12,13 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $cliente = Cliente::orWhere("nombre_completo", "like", "%".$request->buscar."%")
+                ->orWhere("ci_nit", "like", "%".$request->buscar."%")
+                ->first();
+
+        return response()->json($cliente);
     }
 
     /**
@@ -28,7 +32,7 @@ class ClienteController extends Controller
         $request->validate([
             "nombre_completo" => "required"
         ]);
-        
+
         $clie =new Cliente;
         $clie->nombre_completo = $request->nombre_completo;
         $clie->direccion = $request->direccion;
