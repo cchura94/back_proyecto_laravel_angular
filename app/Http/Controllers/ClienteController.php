@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -24,7 +25,17 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "nombre_completo" => "required"
+        ]);
+        
+        $clie =new Cliente;
+        $clie->nombre_completo = $request->nombre_completo;
+        $clie->direccion = $request->direccion;
+        $clie->ci_nit = $request->ci_nit;
+        $clie->save();
+
+        return response()->json(["mensaje" => "Cliente registrado", "data" => $clie]);
     }
 
     /**
