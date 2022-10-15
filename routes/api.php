@@ -27,6 +27,9 @@ Route::group(['prefix' => "v1/auth"], function(){
 
 Route::group(['middleware' => 'auth:sanctum'], function(){
 
+    // subir imagen
+    Route::post("/producto/{id}/subir-img", [ProductoController::class, "subirImagen"]);
+
     Route::apiResource("categoria", CategoriaController::class);
     Route::apiResource("cliente", ClienteController::class);
     Route::apiResource("producto", ProductoController::class);

@@ -56,6 +56,22 @@ class ProductoController extends Controller
         return response()->json(["mensaje" => "Producto Registrado"], 201);
     }
 
+    public function subirImagen(Request $request, $id)
+    {
+        $producto = Producto::find($id);
+        
+        if($file = $request->file("imagen")){
+            $direccion_imagen = time()."-".$file->getClientOriginalName();
+            $file->move("imagenes/", $direccion_imagen);           
+
+            $producto->imagen = "imagenes/".$direccion_imagen;
+            $producto->update();
+
+        }
+
+        return response()->json(["mensaje" => "Imagen Cargada"]);
+    }
+
     /**
      * Display the specified resource.
      *
